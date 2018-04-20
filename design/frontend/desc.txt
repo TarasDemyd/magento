@@ -1,0 +1,69 @@
+1. В редакторі html "Home Page" потрібно додати код (Content->Pages->Home Page) він відповідає за контент і товари на головній:
+
+<div class="top-section">
+<div class="top-section-text">
+<div class="section-title">Lookbook</div>
+<div class="section-subtitle">New Collection</div>
+<a class="section-shop-button" href="#">Shop now</a></div>
+</div>
+<div class="bottom-section">
+<div class="left-part">
+<div class="left-part-text">
+<div class="section-title">complete your style</div>
+<p>Are You a Man Who Know to Accessorize</p>
+<a class="section-shop-button" href="#">Shop now</a></div>
+</div>
+<div class="right-part">
+<div class="right-part-top">
+<div class="section-title">Show your love</div>
+<div class="section-subtitle">This mother's day</div>
+</div>
+<div class="right-part-left"></div>
+<div class="right-part-right">
+<div>Free Shipping <span>With all purchase from $100</span></div>
+</div>
+</div>
+</div>
+<p>{{widget type="Magento\Catalog\Block\Product\Widget\NewWidget" display_type="all_products" show_pager="0" products_count="10" template="product/widget/new/content/new_grid.phtml"}}</p>
+
+
+2. В блоках (Content->Blocks) потрібно створити новий блок з айді (Identifier)  footer-1-1 і додати в редактор код який відповідає за меню в футері:
+
+<div class="first-menu">
+<div class="footer-menu-label">Company Info</div>
+<ul>
+<li class="nav item"><a href="{{store url="about-us"}}">About Us</a></li>
+<li><a href="{{store url="contact-us"}}">Contact Us</a></li>
+<li><a href="{{store url="sell-cws"}}">Sell to CWS</a></li>
+<li><a href="{{store url="terms-conditions"}}">Terms and Conditions</a></li>
+<li><a href="{{store url="authenticity"}}">Authenticity Guarantee</a></li>
+<li><a href="{{store url="privacy-policy"}}">Privacy Policy</a></li>
+</ul>
+</div>
+<div class="second-menu">
+<div class="footer-menu-label">Help Center</div>
+<ul>
+<li class="nav item"><a href="{{store url="policy"}}">Shipping Policy</a></li>
+<li><a href="{{store url="payment-options"}}">Payment Options</a></li>
+<li><a href="{{store url="order-information"}}">Order Information</a></li>
+<li><a href="{{store url="international-shipping"}}">International Shipping</a></li>
+<li><a href="{{store url="return-policy"}}">Return Policy</a></li>
+<li><a href="{{store url="product-warranty"}}">Product Warranty</a></li>
+<li><a href="{{store url="repair-center"}}">Repair Center</a></li>
+<li><a href="{{store url="faq"}}">FAQ</a></li>
+</ul>
+</div>
+<div class="third-menu">
+<div class="footer-menu-label">My Account</div>
+<ul class="account-menu">
+<li class="nav item"><a href="{{store url="manage-account"}}">Manage Your Account</a></li>
+<li><a href="{{store url="order-status"}}">Order Status</a></li>
+</ul>
+<div class="footer-menu-label last-label">FOLLOW US</div>
+<ul class="social-menu">
+<li class="nav item"><a href="http://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
+<li><a href="http://www.google.com/"><i class="fa fa-google-plus"></i></a></li>
+<li><a href="http://www.pinterest.com/"><i class="fa fa-pinterest-p"></i></a></li>
+<li><a href="http://www.twitter.com/"><i class="fa fa-twitter"></i></a></li>
+</ul>
+</div>

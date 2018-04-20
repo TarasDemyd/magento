@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+
+
+
+        <referenceBlock name="logo">
+            <arguments>
+                <argument name="logo_file" xsi:type="string">images/logo.png</argument>
+                <argument name="logo_img_width" xsi:type="number">198</argument>
+                <argument name="logo_img_height" xsi:type="number">60</argument>
+            </arguments>
+        </referenceBlock>
+
+        <referenceContainer name="footer">
+
+                <block name="footer-menu-1" class="Magento\Framework\View\Element\Template" template="Magento_Theme::html/footer-menu.phtml">
+                    <block name="footer-1-1" class="Magento\Cms\Block\Block">
+                        <arguments>
+                            <argument name="block_id" xsi:type="string">footer-1-1</argument>
+                        </arguments>
+                    </block>
+                </block>
+
+
+        </referenceContainer>
+
+        <move element="top.search" destination="header-wrapper" before="-"/>
+
+        <referenceBlock name="header.panel.wrapper" remove="true"/>
+        <referenceBlock name="footer_links" remove="true"/>
+
+        <move element="copyright" destination="before.body.end"/>
+        <move element="header.links" destination="header-wrapper"/>
+    </body>
+</page>
