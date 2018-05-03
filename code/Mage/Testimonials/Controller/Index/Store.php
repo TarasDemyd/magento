@@ -62,21 +62,14 @@ class Store extends Action
 
         {
 
-            $response = [
-                'errors' => false,
-                'message' => __('Your testimonial will be published after moderation')
-            ];
             try {
                 $post = $this->postFactory->create();
                 $post->setUserId($this->customerSession->getCustomer()->getId());
-                $post->setPostContent($this->getRequest()->getParam('post_content'));
+                $post->setPostContent($this->getRequest()->getParam('post-content'));
                 $post->setCreatedAt(date('Y-m-d h:i:s', time()));
                 $post->save();
 
-                $textDisplay = new \Magento\Framework\DataObject(array('text' => 'Mage event notification'));
-                $this->_eventManager->dispatch('testimonials_display', ['mp_text' => $textDisplay]);
-                echo $textDisplay->getText();
-                exit;
+                return $resultRedirect;
 
             }  catch (\Exception $e) {
                 $response = [

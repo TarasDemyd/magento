@@ -1,0 +1,113 @@
+.testimonials-wrapper{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+.testimonials-content{
+    width: 60%;
+    padding: 20px 40px;
+    background-color: #f3f3f3;
+    position: relative;
+}
+.testimonials-content:before{
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: -15px;
+    width: 0;
+    height: 0;
+    border-top: 14px solid transparent;
+    border-right: 15px solid #f3f3f3;
+    border-bottom: 14px solid transparent;
+}
+.testimonials-customer-info{
+    width: 25%;
+}
+.testimonial-pagination{
+    width: 100%;
+    padding: 12px 0;
+    border-top: 1px solid #cccccc;
+    border-bottom: 1px solid #cccccc;
+}
+.testimonial-pagination:before,.testimonial-pagination:after{
+    content: '';
+    clear: both;
+    display: table;
+}
+.pager .limiter{
+    float: left;
+    margin-left: 30px;
+}
+.pager .pages{
+    float: right;
+}
+
+.pages>#paging-label{
+    position: relative;
+    width: auto;
+    height: auto;
+    margin-right: 10px;
+    text-transform: uppercase;
+    font-weight: normal;
+}
+.limiter-label{
+    text-transform: uppercase;
+}
+.testimonial-pagination .pages strong.page{
+    background: transparent;
+    font-weight: 400;
+    line-height: 24px;
+    padding: 0 8px;
+    border: 1px solid #cccccc;
+}
+.testimonial-pagination .pages .action{
+    border-radius: 0;
+    box-shadow: none;
+    padding: 0;
+    border: none;
+    background: transparent;
+}
+.testimonials-block{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+.testimonials-block h2{
+    margin: 0;
+}
+.testimonials-form-wrapper .testimonial-button{
+    background: #f6a408;
+    text-align: center;
+    width: 270px;
+    height: 44px;
+    line-height: 44px;
+    float: right;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    color: #fff;
+}
+.testimonials-form-wrapper form{
+    clear: both;
+    text-align: center;
+    display: none;
+}
+.testimonials-form-wrapper .testimonials-title{
+    margin-bottom: 10px;
+}
+.testimonials-form-wrapper button{
+    text-transform: uppercase;
+    color: #fff;
+    background: #f6a408;
+    font-weight: normal;
+    border: none;
+    border-radius: 0;
+    padding: 10px 20px;
+    margin-top: 10px;
+}
+.testimonials-notification{
+    margin-right: 20px;
+}
+.testimonials-block .login-wrapper{
+    display: flex;
+}

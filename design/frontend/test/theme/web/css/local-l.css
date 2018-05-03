@@ -239,11 +239,18 @@ body{
     margin: 0;
     color:  #7e807e;
 }
-.header.links li.authorization-link{
-    margin-right: 3px;
+.header.links li:last-child{
+    margin-left: 3px;
 }
-.header.links li.authorization-link:after{
+.header.links li:last-child:before{
     content:'or';
+    margin-right: 2px;
+}
+.header.links li.authorization-link:before{
+    content: none;
+}
+.header.links li.authorization-link{
+    margin-left: 0;
 }
 .header.links a{
     color:  #ffa800;
