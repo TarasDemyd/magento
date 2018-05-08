@@ -1,58 +1,54 @@
 <?php
+/*
 
+ *
+ */
 namespace Mage\Testimonials\Controller\Adminhtml\Post;
 
-
-use Mage\Testimonials\Model\ResourceModel\Post\Collection;
 use Magento\Backend\App\Action\Context;
-use Magento\Framework\App\ResponseInterface;
 use Magento\Ui\Component\MassAction\Filter;
+use Mage\Testimonials\Model\ResourceModel\Post\CollectionFactory;
 use Magento\Framework\Controller\ResultFactory;
-
-class MassDelete extends \Magento\Backend\App\Action
+/**
+ * Class MassDelete
+ */
+class MassDelete  extends \Magento\Backend\App\Action
 {
     /**
      * @var Filter
      */
     protected $filter;
-
     /**
-     * @var Collection
+     * @var CollectionFactory
      */
-    protected $collection;
-
+    protected $collectionFactory;
     /**
-     * MassDelete constructor.
      * @param Context $context
      * @param Filter $filter
-     * @param Collection $collection
+     * @param CollectionFactory $collectionFactory
      */
-    public function __construct(Context $context, Filter $filter, Collection $collection)
+    public function __construct(Context $context, Filter $filter, CollectionFactory $collectionFactory)
     {
-
         $this->filter = $filter;
-        $this->collection = $collection;
+        $this->collectionFactory = $collectionFactory;
         parent::__construct($context);
     }
-
     /**
-     * @return $this|ResponseInterface|\Magento\Framework\Controller\ResultInterface
-     * @throws \Magento\Framework\Exception\LocalizedException
+     * Execute action
+     *
+     * @return \Magento\Backend\Model\View\Result\Redirect
+     * @throws \Magento\Framework\Exception\LocalizedException|\Exception
      */
     public function execute()
     {
-        $collection = $this->filter->getCollection($this->collection->create());
+        $collection = $this->filter->getCollection($this->collectionFactory->create());
         $collectionSize = $collection->getSize();
-
         foreach ($collection as $item) {
             $item->delete();
         }
-
-        $this->messageManager->addSuccess(__('A total of %1 element(s) have been deleted.', $collectionSize));
-
+        $this->messageManager->addSuccess(__('A total of %1 testimonial(s) have been deleted.', $collectionSize));
         /** @var \Magento\Backend\Model\View\Result\Redirect $resultRedirect */
         $resultRedirect = $this->resultFactory->create(ResultFactory::TYPE_REDIRECT);
         return $resultRedirect->setPath('*/*/');
     }
-
 }

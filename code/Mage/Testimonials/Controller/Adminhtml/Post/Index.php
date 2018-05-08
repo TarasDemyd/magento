@@ -18,14 +18,12 @@ class Index extends \Magento\Backend\App\Action
     public function execute()
     {
         $resultPage = $this->resultPageFactory->create();
-        $resultPage->getConfig()->getTitle()->prepend((__('Posts')));
+        $resultPage->getConfig()->getTitle()->prepend((__('Testimonials')));
 
         return $resultPage;
     }
-    protected function _isAllowed()
-    {
-        return $this->_authorization->isAllowed('Magento_Customer::manage');
-    }
+
+
 
 
 }
