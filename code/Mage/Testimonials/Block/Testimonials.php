@@ -23,7 +23,7 @@ class Testimonials extends \Magento\Framework\View\Element\Template
         $pagination = $this->_postFactory->create()->getCollection();
         $pagination->setPageSize($pageSize);
         $pagination->setCurPage($page);
-        $pagination->setOrder('user_id', 'DESC');
+        $pagination->setOrder('post_id', 'DESC');
         return $pagination;
     }
 
