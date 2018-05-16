@@ -16,7 +16,7 @@ $customerSession = $objectManager->create('Magento\Customer\Model\Session');
 if ($customerSession->isLoggedIn()): ?>
 
     <div class="testimonials-form-wrapper">
-        <div class="testimonial-button"><?php echo __('Submit your testimonial') ?></div>
+        <div class="testimonial-button testimonial-form-button"><?php echo __('Submit your testimonial') ?></div>
         <form method="post" action="<?= $block->getUrl('testimonials/index/store') ?>" data-role="testimonials-form" class="testimonials-form">
             <div class="testimonials-title">
                 <?php echo __('Add testimonial') ?>
@@ -27,16 +27,22 @@ if ($customerSession->isLoggedIn()): ?>
         </form>
     </div>
 <?php else: ?>
+    <div class="testimonials-form-wrapper">
+        <div class="testimonial-button testimonial-modal-button"><?php echo __('Submit your testimonial') ?></div>
+    </div>
 
       <div class="login-wrapper">
-        <span class="testimonials-notification">
-                <?php echo __('You must be logged in to leave a testimonials'); ?>
-        </span>
+        <div class="login-container">
+            <div class="modal-close"><i class="fa fa-times" aria-hidden="true"></i></div>
+            <span class="testimonials-notification">
+                    <?php echo __('You must be logged in to leave a testimonials'); ?>
+            </span>
 
-        <div class="testimonials-login">
-            <a href="<?= $block->escapeUrl($block->getUrl('customer/account/login')); ?>">
-                <?php echo __('Login'); ?>
-            </a>
+            <div class="testimonials-login">
+                <a href="<?= $block->escapeUrl($block->getUrl('customer/account/login')); ?>">
+                    <?php echo __('Login'); ?>
+                </a>
+            </div>
         </div>
       </div>
 
