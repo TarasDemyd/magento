@@ -23,6 +23,7 @@ class Testimonials extends \Magento\Framework\View\Element\Template
         $pagination = $this->_postFactory->create()->getCollection();
         $pagination->setPageSize($pageSize);
         $pagination->setCurPage($page);
+        $pagination->addFieldToFilter('main_table.is_active', 1);
         $pagination->setOrder('post_id', 'DESC');
         return $pagination;
     }
@@ -34,7 +35,7 @@ class Testimonials extends \Magento\Framework\View\Element\Template
                 'Magento\Theme\Block\Html\Pager',
                 'mage.testimonials.pager'
             )->setTemplate('Mage_Testimonials::html/pager.phtml')
-                    ->setAvailableLimit(array(5 => 5, 10 => 10, 15 => 15, 20 => 20))
+                    ->setAvailableLimit(array(5 => 5, 10 => 10, 15 => 15))
             ->setShowPerPage(true)
             ->setCollection(
                 $this->getPostCollection()

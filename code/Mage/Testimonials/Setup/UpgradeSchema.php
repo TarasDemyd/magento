@@ -21,7 +21,7 @@ class UpgradeSchema implements UpgradeSchemaInterface
 
         $installer->startSetup();
 
-        if(version_compare($context->getVersion(), '1.1.2', '<')) {
+        if(version_compare($context->getVersion(), '1.1.5', '<')) {
             if (!$installer->tableExists('mage_testimonials_post')) {
                 $table = $installer->getConnection()->newTable(
                     $installer->getTable('mage_testimonials_post')
@@ -54,16 +54,24 @@ class UpgradeSchema implements UpgradeSchemaInterface
                         \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
                         '64k',
                         [],
-                        'Post Post Content'
-                    )
+                        'Testimonial Content'
 
+                    )
+                    ->addColumn(
+                        'is_active',
+                        \Magento\Framework\DB\Ddl\Table::TYPE_SMALLINT,
+                        null,
+                        ['nullable' => false, 'default' => '0'],
+                        'Is Testimonial Active'
+                    )
                     ->addColumn(
                         'created_at',
                         \Magento\Framework\DB\Ddl\Table::TYPE_TIMESTAMP,
                         null,
                         ['nullable' => false, 'default' => \Magento\Framework\DB\Ddl\Table::TIMESTAMP_INIT],
                         'Created At'
-                    )->addColumn(
+                    )
+                    ->addColumn(
                         'updated_at',
                         \Magento\Framework\DB\Ddl\Table::TYPE_TIMESTAMP,
                         null,

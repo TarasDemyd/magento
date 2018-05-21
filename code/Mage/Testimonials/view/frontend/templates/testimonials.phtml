@@ -55,7 +55,6 @@ if ($customerSession->isLoggedIn()): ?>
         $customerID = $post->getUserId();
         $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
         $customerObj = $objectManager->create('Magento\Customer\Model\Customer')->load($customerID); ?>
-
         <div class="testimonials-wrapper">
             <div class="testimonials-customer-info">
                 <div class="testimonials-customer-name">

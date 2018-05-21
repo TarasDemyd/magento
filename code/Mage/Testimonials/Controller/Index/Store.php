@@ -12,6 +12,7 @@ use Magento\Framework\Controller\Result\JsonFactory;
 use Magento\Framework\Event\ObserverInterface;
 use Magento\Framework\Event\Manager;
 use Mage\Testimonials\Model\PostFactory;
+use Magento\Framework\Message\ManagerInterface;
 
 
 class Store extends Action
@@ -68,8 +69,10 @@ class Store extends Action
                 $post->setPostContent($this->getRequest()->getParam('post-content'));
                 $post->setCreatedAt(date('Y-m-d h:i:s', time()));
                 $post->save();
+                $this->messageManager->addSuccessMessage( __('Your testimonial added and waiting for moderation') );
 
                 return $resultRedirect;
+
 
             }  catch (\Exception $e) {
                 $response = [

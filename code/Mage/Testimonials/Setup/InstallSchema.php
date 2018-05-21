@@ -53,7 +53,13 @@ class InstallSchema implements \Magento\Framework\Setup\InstallSchemaInterface
                     [],
                     'Post Post Content'
                 )
-
+                ->addColumn(
+                    'is_active',
+                    \Magento\Framework\DB\Ddl\Table::TYPE_SMALLINT,
+                    null,
+                    ['nullable' => false, 'default' => '0'],
+                    'Is Testimonial Active'
+                )
                 ->addColumn(
                     'created_at',
                     \Magento\Framework\DB\Ddl\Table::TYPE_TIMESTAMP,
