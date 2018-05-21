@@ -2,15 +2,19 @@
 
 namespace Mage\Testimonials\Block;
 
+
 class Testimonials extends \Magento\Framework\View\Element\Template
 {
     protected $_postFactory;
+    protected $helperData;
     public function __construct(
         \Magento\Framework\View\Element\Template\Context $context,
-        \Mage\Testimonials\Model\PostFactory $postFactory
+        \Mage\Testimonials\Model\PostFactory $postFactory,
+        \Mage\Testimonials\Helper\Data $helperData
     )
     {
         $this->_postFactory = $postFactory;
+        $this->helperData = $helperData;
         parent::__construct($context);
     }
 
@@ -30,6 +34,14 @@ class Testimonials extends \Magento\Framework\View\Element\Template
 
     protected function _prepareLayout()
     {
+        $description = $this->helperData->getGeneralConfig('module_description');
+        $keywords = $this->helperData->getGeneralConfig('module_keywords');
+        $title = $this->helperData->getGeneralConfig('module_title');
+
+        $this->pageConfig->getTitle()->set($title);
+        $this->pageConfig->setMetadata('description', $description);
+        $this->pageConfig->setMetadata('keywords', $keywords);
+
         if ($this->getPostCollection()) {
             $pager = $this->getLayout()->createBlock(
                 'Magento\Theme\Block\Html\Pager',
