@@ -1,0 +1,10 @@
+<!--@subject {{trans "A new testimonial was creates on the site"}} @-->
+<!--@vars {
+"var data.date":"Sender Date",
+"var data.email":"Sender Email",
+"var data.post_content":"Testimonial"
+} @-->
+
+{{trans "Date: %date" date=$data.date}}
+{{trans "Email: %email" email=$data.email}}
+{{trans "Testimonial: %post_content" post_content=$data.post_content}}

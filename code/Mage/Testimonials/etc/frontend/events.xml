@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
-    <event name="mage_testimonials_display_text">
-        <observer name="testimonials_display" instance="Mage\Testimonials\Observer\ChangeDisplayText" />
+    <event name="mage_testimonials_email">
+        <observer name="email_send" instance="Mage\Testimonials\Observer\Mail" />
     </event>
 </config>

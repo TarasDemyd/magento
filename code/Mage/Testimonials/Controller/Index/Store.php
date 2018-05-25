@@ -3,16 +3,13 @@
 namespace Mage\Testimonials\Controller\Index;
 
 
-use Magento\Framework\Controller\ResultFactory;
 use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\Action\Context;
 use Magento\Customer\Model\Session;
 use Magento\Framework\Data\Form\FormKey\Validator;
 use Magento\Framework\Controller\Result\JsonFactory;
-use Magento\Framework\Event\ObserverInterface;
 use Magento\Framework\Event\Manager;
 use Mage\Testimonials\Model\PostFactory;
-use Magento\Framework\Message\ManagerInterface;
 
 
 class Store extends Action
@@ -34,6 +31,7 @@ class Store extends Action
         Validator $formKeyValidator,
         JsonFactory    $resultJsonFactory,
         Manager $eventManager
+
     ) {
         $this->formKeyValidator = $formKeyValidator;
         $this->customerSession = $customerSession;
@@ -44,19 +42,7 @@ class Store extends Action
     }
     public function execute()
     {
-        /**
-         * @var \Magento\Framework\Controller\Result\Redirect $resultRedirect
-         */
 
-
-        $resultRedirect = $this->resultFactory->create(ResultFactory::TYPE_REDIRECT);
-        $resultRedirect->setUrl($this->_redirect->getRefererUrl());
-        $result = $this->resultJsonFactory->create();
-        if (!$this->customerSession->getCustomer()->getId() or !$this->formKeyValidator->validate($this->getRequest()
-            )) {
-            return $resultRedirect;
-
-        }
 
         if ($this->getRequest())
 
@@ -66,21 +52,24 @@ class Store extends Action
             try {
                 $post = $this->postFactory->create();
                 $post->setUserId($this->customerSession->getCustomer()->getId());
-                $post->setPostContent($this->getRequest()->getParam('post-content'));
+                $post->setPostContent($this->getRequest()->getParam('postcontent'));
                 $post->setCreatedAt(date('Y-m-d h:i:s', time()));
                 $post->save();
-                $this->messageManager->addSuccessMessage( __('Your testimonial added and waiting for moderation') );
 
-                return $resultRedirect;
+
+
+                $this->eventManager->dispatch('mage_testimonials_email', [
+                    'customer' => (array)$this->customerSession->getCustomer()->getData(),
+                    'testimonial' => (array)$post->getData()
+                ]);
+
+                $this->messageManager->addSuccessMessage( __('Your testimonial added and waiting for moderation') );
 
 
             }  catch (\Exception $e) {
-                $response = [
-                    'errors' => true,
-                    'message' => __('Server Error.')
-                ];
+                $this->messageManager->addErrorMessage(__($e->getMessage()));
             }
-            return $result->setData($response);
         }
+
     }
 }
