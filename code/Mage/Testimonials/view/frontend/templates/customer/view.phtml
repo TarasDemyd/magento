@@ -1,0 +1,29 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/** @var \Mage\Testimonials\Block\View $block */
+
+?>
+
+    <div class="testimonials-wrapper">
+
+        <form id="testimonials-form-edit" method="post" action="<?= $block->getUrl('testimonials/customer/edit') ?>" data-role="testimonials-form" class="testimonials-form-edit">
+            <div class="testimonials-publish-date">
+                <?php echo (new DateTime($block->getPost()->getCreatedAt()))->format('d/m/Y'); ?>
+            </div>
+            <div class="testimonials-title">
+                <?php echo __('Change your testimonial') ?>
+            </div>
+            <input name="id" type="hidden" value="<?php echo $block->getPost()->getPostId();?>">
+            <input name="form_key" type="hidden" value="<?php echo $block->getFormKey(); ?>">
+            <textarea title="<?php echo $block->getPost()->getPostId();?>" name="savecontent" autofocus><?php echo $block->getPost()->getPostContent();?></textarea>
+            <button class="testimonial-save-submit" type="submit"><?php echo __('Save') ?></button>
+        </form>
+    </div>
+
+
