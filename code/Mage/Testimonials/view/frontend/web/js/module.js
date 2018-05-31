@@ -27,6 +27,7 @@ require([
                         type: 'POST',
                         success: function() {
                             $('.testimonial-loading').hide();
+                            $('.testimonials-form-wrapper textarea').val('');
                         },
                         error: function (xhr, status, errorThrown) {
                             console.log('Error happens. Try again.');
@@ -34,7 +35,7 @@ require([
                         },
                         complete: function () {
                             $('.testimonials-form-wrapper form').toggle('fast');
-                            $('.testimonials-form-wrapper textarea').val('');
+
                         }
                     });
                 }

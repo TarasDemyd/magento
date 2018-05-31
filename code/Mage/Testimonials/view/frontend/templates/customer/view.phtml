@@ -21,9 +21,16 @@
             </div>
             <input name="id" type="hidden" value="<?php echo $block->getPost()->getPostId();?>">
             <input name="form_key" type="hidden" value="<?php echo $block->getFormKey(); ?>">
-            <textarea title="<?php echo $block->getPost()->getPostId();?>" name="savecontent" autofocus><?php echo $block->getPost()->getPostContent();?></textarea>
+            <textarea title="<?php echo $block->getPost()->getPostId();?>" name="savecontent" data-validate="{required:true}" autofocus><?php echo $block->getPost()->getPostContent();?></textarea>
             <button class="testimonial-save-submit" type="submit"><?php echo __('Save') ?></button>
         </form>
     </div>
 
+<script type="text/x-magento-init">
+    {
+        "#testimonials-form-edit": {
+            "validation": {}
+        }
+    }
+</script>
 

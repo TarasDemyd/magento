@@ -17,12 +17,12 @@ if ($customerSession->isLoggedIn()): ?>
 
     <div class="testimonials-form-wrapper">
         <div class="testimonial-button testimonial-form-button"><?php echo __('Submit your testimonial') ?></div>
-        <form id="testimonials-form-data" method="post" action="<?= $block->getUrl('testimonials/index/store') ?>" data-role="testimonials-form" class="testimonials-form">
+        <form id="testimonials-form-data" method="post" action="<?= $block->getUrl('testimonials/index/store') ?>" data-role="testimonials-form" class="testimonials-form" data-mage-init='{"validation":{}}'>
             <div class="testimonials-title">
                 <?php echo __('Add testimonial') ?>
             </div>
             <input name="form_key" type="hidden" value="<?php echo $block->getFormKey();?>">
-            <textarea name="postcontent" placeholder="Testimonial text" autofocus></textarea>
+            <textarea name="postcontent" placeholder="Testimonial text" data-validate="{required:true}" autofocus></textarea>
             <button class="testimonial-submit" type="submit"><?php echo __('Submit testimonial') ?></button>
             <div class="testimonial-loading"><?php echo __('Loading...') ?></div>
         </form>
@@ -77,4 +77,10 @@ if ($customerSession->isLoggedIn()): ?>
         </div>
     <?php endif ?>
 
-
+<script type="text/x-magento-init">
+    {
+        "#testimonials-form-data": {
+            "validation": {}
+        }
+    }
+</script>
