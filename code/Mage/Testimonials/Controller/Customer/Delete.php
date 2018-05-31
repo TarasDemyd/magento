@@ -56,6 +56,7 @@ class Delete extends Action
                 $postId = $this->getRequest()->getParam('id', false);
                 $post = $this->postFactory->create()->load($postId);
                 $post->delete();
+                $post->cleanModelCache();
                 $this->messageManager->addSuccessMessage(__('Your testimonial successfully deleted'));
                 return $resultRedirect;
 

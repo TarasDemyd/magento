@@ -58,6 +58,7 @@ class Edit extends Action
                 $post = $this->postFactory->create()->load($postId);
                 $post->setPostContent($postContent);
                 $post->save();
+                $post->cleanModelCache();
                 $this->messageManager->addSuccessMessage(__('Your testimonial successfully saved'));
                 return $resultRedirect;
 

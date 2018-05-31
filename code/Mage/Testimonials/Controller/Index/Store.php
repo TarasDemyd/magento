@@ -55,6 +55,7 @@ class Store extends Action
                 $post->setPostContent($this->getRequest()->getParam('postcontent'));
                 $post->setCreatedAt(date('Y-m-d h:i:s', time()));
                 $post->save();
+                $post->cleanModelCache();
 
 
 
