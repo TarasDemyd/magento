@@ -14,4 +14,12 @@
         </arguments>
     </type>
 
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="testimonials_form_data_source" xsi:type="string">Mage\Testimonials\Model\ResourceModel\Post\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+
 </config>
